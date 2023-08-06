@@ -33,4 +33,4 @@ To use the Telegabot ROS packages, follow these steps:
 1. Clone the repository into your ROS workspace (e.g., catkin_ws/src).
 
 ```bash
-git clone <repository_url> catkin_ws/src
+git clone https://github.com/AlexanderRex/telegabot.git catkin_ws/src
