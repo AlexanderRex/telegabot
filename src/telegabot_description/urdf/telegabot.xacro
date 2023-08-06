@@ -1,0 +1,111 @@
+<?xml version="1.0" ?>
+<robot name="telegabot" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find telegabot)/src/telegabot_description/urdf/materials.xacro" />
+<xacro:include filename="$(find telegabot)/src/telegabot_description/urdf/telegabot.gazebo" />
+
+<link name="base_link">
+  <inertial>
+    <origin xyz="-0.053978332524068945 0.0005486177133107931 0.02717585951456606" rpy="0 0 0"/>
+    <mass value="0.4701063510209359"/>
+    <inertia ixx="0.000485" iyy="0.00334" izz="0.003765" ixy="-1.9e-05" iyz="1e-06" ixz="7.4e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://telegabot/src/telegabot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="taxi"/>
+  </visual>
+  <collision>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://telegabot/src/telegabot_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="right_wheel_1">
+  <inertial>
+    <origin xyz="-8.901336959188377e-10 -0.01656576400915953 -2.6848042192217925e-09" rpy="0 0 0"/>
+    <mass value="0.05046360918299968"/>
+    <inertia ixx="2.1e-05" iyy="3.6e-05" izz="2.1e-05" ixy="-0.0" iyz="-0.0" ixz="-0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.025 0.05 -0.0326" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://telegabot/src/telegabot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="taxi"/>
+  </visual>
+  <collision>
+    <origin xyz="0.025 0.05 -0.0326" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://telegabot/src/telegabot_description/meshes/right_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="left_wheel_1">
+  <inertial>
+    <origin xyz="8.901334704047859e-10 0.01656576400915942 -2.684804246977368e-09" rpy="0 0 0"/>
+    <mass value="0.05046360918299968"/>
+    <inertia ixx="2.1e-05" iyy="3.6e-05" izz="2.1e-05" ixy="-0.0" iyz="0.0" ixz="0.0"/>
+  </inertial>
+  <visual>
+    <origin xyz="0.025 -0.05 -0.0326" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://telegabot/src/telegabot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="taxi"/>
+  </visual>
+  <collision>
+    <origin xyz="0.025 -0.05 -0.0326" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://telegabot/src/telegabot_description/meshes/left_wheel_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="lidar_1">
+  <inertial>
+    <origin xyz="0.011213254564606798 -0.0006818402729012712 -0.019678606937466064" rpy="0 0 0"/>
+    <mass value="0.1705800575865049"/>
+    <inertia ixx="7.6e-05" iyy="0.000136" izz="0.000166" ixy="-1e-06" iyz="2e-06" ixz="1.1e-05"/>
+  </inertial>
+  <visual>
+    <origin xyz="-0.100353 -0.0 -0.07096" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://telegabot/src/telegabot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="taxi"/>
+  </visual>
+  <collision>
+    <origin xyz="-0.100353 -0.0 -0.07096" rpy="0 0 0"/>
+    <geometry>
+      <mesh filename="package://telegabot/src/telegabot_description/meshes/lidar_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="right_wheel_joint" type="continuous">
+  <origin xyz="-0.025 -0.05 0.0326" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="right_wheel_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="left_wheel_joint" type="continuous">
+  <origin xyz="-0.025 0.05 0.0326" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="left_wheel_1"/>
+  <axis xyz="-0.0 1.0 -0.0"/>
+</joint>
+
+<joint name="lidar_joint" type="fixed">
+  <origin xyz="0.100353 0.0 0.07096" rpy="0 0 0"/>
+  <parent link="base_link"/>
+  <child link="lidar_1"/>
+</joint>
+
+</robot>
