@@ -22,28 +22,35 @@ The telegabot_gazebo package contains launch files for running the robot in the 
 ## Installation and Usage
 To use the Telegabot ROS packages, follow these steps:
 
-Clone the repository into your ROS workspace (e.g., catkin_ws/src).
-'''bash
+1.Clone the repository into your ROS workspace (e.g., catkin_ws/src).
+
+```bash
 git clone https://github.com/AlexanderRex/telegabot.git catkin_ws/src
+```
 
-Build the packages using catkin.
-'''bash
+2.Build the packages using catkin.
 
+```bash
 cd catkin_ws
 catkin_make
+```
 
-Source the setup file.
-'''bash
+3.Source the setup file.
+
+```bash
 source devel/setup.bash
+```
 
-Launch the desired components using the provided launch files. For example, to launch the 2D navigation stack and control:
+4.Launch the desired components using the provided launch files. For example, to launch the 2D navigation stack and control:
 
-'''bash
+```bash
 roslaunch telegabot_config telegabot_software.launch
 roslaunch telegabot_2dnav telegabot_move_base.launch
 roslaunch telegabot_control telegabot_control.launch
+```
 
-To run the simulation in Gazebo:
-'''bash
+5.To run the simulation in Gazebo:
 
+```bash
 roslaunch telegabot_gazebo telegabot_world.launch
+```
